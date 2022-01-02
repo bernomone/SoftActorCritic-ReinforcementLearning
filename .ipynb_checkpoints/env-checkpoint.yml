@@ -1,12 +1,16 @@
-name: space_invaders
+name: spaceInvaders
 
 dependencies:
+- pip
 - pip:
     - numpy
     - scipy
     - torch
     - torchvision
     - scikit-learn
+    - opencv-python
     - gym
-    - gym[atari,accept-rom-license]
+    - gym[atari]
+    - gym[accept-rom-license]
     - matplotlib
+    - seaborn
