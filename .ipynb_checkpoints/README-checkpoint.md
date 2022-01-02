@@ -8,6 +8,8 @@ This implementation works with all the Open AI Gym Environments having discrete 
 
 # How to use it?
 
+The requirements for the repo to work are in env.yml (if you use conda: conda env create -f env.yml).
+
 First, edit the __config01.json__ file (or create a new one), with the metaparameters and variables used for the training:
 
 - configId: string identifier of the traning, 
@@ -32,7 +34,7 @@ First, edit the __config01.json__ file (or create a new one), with the metaparam
     - h_mu_dim: hidden units of the policy flat layers
 
 
-The run "python train.py" to start training. <br>
+The run "python train.py" to start training. The training curve will be saved into the "train_figs" folder every 100 episodes, while the model parameters will be stored in "saved_models". <br>
 
 When the training is over, launch "python best_of_100_episodes.py" to have the best episode reward out of a sample of 100. Best score on the Open AI Leader Board (https://github.com/openai/gym/wiki/Leaderboard) is 3454. Here, we should get around 1500. <br>
 
