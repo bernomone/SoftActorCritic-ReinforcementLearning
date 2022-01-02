@@ -4,7 +4,7 @@ This is my implementation of the discrete Soft Actor Critic algorithm for Reinfo
 
 - Christodoulou, Petros. "Soft actor-critic for discrete action settings." arXiv preprint arXiv:1910.07207 (2019).
 
-This implementation works with all the Open AI Gym Environments having discrete action sets.
+This implementation works with all the Open AI Gym Environments having a discrete action set.
 
 # How to use it?
 
