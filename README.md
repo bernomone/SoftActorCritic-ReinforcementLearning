@@ -40,6 +40,4 @@ When the training is over, launch "python best_of_100_episodes.py" to have the b
 
 To generate a small movie of a match use instead "python generate_match_video.py". There is an example in the __/video__ directory.
 
-
-https://user-images.githubusercontent.com/12211213/148213785-10ed80a4-fadb-4557-b7fb-fe8fa380108f.mp4
-
+https://github.com/bernomone/SoftActorCritic_ReinforcementLearning/blob/main/videos/config01_seed_0.mp4
