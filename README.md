@@ -38,4 +38,4 @@ The run "python train.py" to start training. The training curve will be saved in
 
 When the training is over, launch "python best_of_100_episodes.py" to have the best episode reward out of a sample of 100. Best score on the Open AI Leader Board (https://github.com/openai/gym/wiki/Leaderboard) is 3454. Here, we should get around 1500. <br>
 
-To generate a small movie of a match use instead "python generate_match_video.py".
+To generate a small movie of a match use instead "python generate_match_video.py". There is an example in the __/video__ directory.
