@@ -4,7 +4,7 @@ This is my implementation of the discrete Soft Actor Critic algorithm for Reinfo
 
 - Christodoulou, Petros. "Soft actor-critic for discrete action settings." arXiv preprint arXiv:1910.07207 (2019).
 
-This implementation works with all the Open AI Gym Environments having a discrete action set, but right now it plays Space Invaders.
+This implementation works with all the Open AI Gym Environments having a discrete action set, but right now it plays **Space Invaders**.
 
 # How to use it?
 
@@ -40,6 +40,4 @@ When the training is over, launch "python best_of_100_episodes.py" to have the b
 
 To generate a small movie of a match use instead "python generate_match_video.py". There is an example in the __/video__ directory.
 
-
-https://user-images.githubusercontent.com/12211213/148213785-10ed80a4-fadb-4557-b7fb-fe8fa380108f.mp4
-
+https://user-images.githubusercontent.com/12211213/148214390-26476b77-61ed-4f43-8149-07abf442b09d.mp4
