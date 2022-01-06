@@ -41,7 +41,7 @@ def generate_video(configId,seed):
 
 parser = argparse.ArgumentParser(description='Create video of a Space Invaders match played by a trained SAC agent')
 parser.add_argument('--config', help="Json file with all the metaparameters. See config01.json as an example.", type=str, default="config01.json",dest="config_file")
-parser.add_argument('--seed', help="Seed of random number generator", type=str, default=0,dest="seed")
+parser.add_argument('--seed', help="Seed of random number generator", type=int, default=0,dest="seed")
 
 args = parser.parse_args()
 
