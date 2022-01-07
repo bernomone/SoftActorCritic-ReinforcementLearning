@@ -4,7 +4,7 @@ This is my implementation of the discrete Soft Actor Critic algorithm for Reinfo
 
 - Christodoulou, Petros. "Soft actor-critic for discrete action settings." arXiv preprint arXiv:1910.07207 (2019).
 
-This implementation works with all the Open AI Gym Environments having a discrete action set.
+This implementation works with all the Open AI Gym Environments having a discrete action set, but right now it plays **Space Invaders**.
 
 # How to use it?
 
@@ -36,6 +36,11 @@ First, edit the __config01.json__ file (or create a new one), with the metaparam
 
 The run "python train.py" to start training. The training curve will be saved into the "train_figs" folder every 100 episodes, while the model parameters will be stored in "saved_models". <br>
 
-When the training is over, launch "python best_of_100_episodes.py" to have the best episode reward out of a sample of 100. Best score on the Open AI Leader Board (https://github.com/openai/gym/wiki/Leaderboard) is 3454. Here, we should get around 1500. <br>
+When the training is over, launch "python best_of_100_episodes.py" to have the best episode reward out of a sample of 100. Best score on the Open AI Leader Board (https://github.com/openai/gym/wiki/Leaderboard) is 3454. Here, we should get around 1800. <br>
 
-To generate a small movie of a match use instead "python generate_match_video.py".
+To generate a small movie of a match use instead "python generate_match_video.py". There is an example in the __/video__ directory.
+
+
+https://user-images.githubusercontent.com/12211213/148438233-441f4ea5-2513-41fd-93da-e855384f13ef.mp4
+
+
