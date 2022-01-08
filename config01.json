@@ -3,12 +3,13 @@
     "env_parameters":{
         "screen_size":120,
         "frame_skip":8, 
-        "seed_value":433 
+        "seed_value":433,
+        "n_stack":3
     },
     "training_parameters":{
         "n_episodes": 1e5, 
         "batch_size": 128, 
-        "t_tot_cut": 6e4  
+        "t_tot_cut": 6e4
     },
     "agent_parameters":{
         "gamma":0.99, 

@@ -62,7 +62,9 @@ class QNet_Agent(nn.Module):
 
     def optimize(self,batch, clip_error=False, update_targets_and_policy=True, n_samples = 100):
         
-        state, action, new_state, reward, done = batch 
+        state_stacked, action, new_state_stacked, reward, done = batch 
+        state = np.array([np.concatenate(s,axis=1) for s in state_stacked])
+        new_state = np.array([np.concatenate(s,axis=1) for s in new_state_stacked])
         
         state = torch.Tensor(np.array(state)).cuda()#.unsqueeze(1)
         action = torch.LongTensor(np.array(action)).cuda()

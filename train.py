@@ -46,6 +46,7 @@ configId = config["configId"]
 screen_size = config["env_parameters"]["screen_size"]
 frame_skip = config["env_parameters"]["frame_skip"]
 seed_value = config["env_parameters"]["seed_value"]
+n_stack = config["env_parameters"]["n_stack"]
 
 #agent
 gamma = config["agent_parameters"]["gamma"]
@@ -120,7 +121,8 @@ for i_episode in range(len(rewards_per_episode),n_episodes):
     try:
         state = env.reset()
         state = np.transpose(state, [2,0,1])
-
+        state_stacked = np.array([state for n in range(n_stack)])
+        
         t=0
         rewards = []
 
@@ -129,18 +131,22 @@ for i_episode in range(len(rewards_per_episode),n_episodes):
             t+=1
             t_total+=1
 
-            state_cuda = torch.Tensor(state).cuda().unsqueeze(0)
-
+            state_cuda = torch.Tensor(np.concatenate(state_stacked,axis=1)).cuda().unsqueeze(0)
             action = qnet_agent.select_action(state_cuda)
             
             new_state, reward, done, info = env.step(action)
             new_state = np.transpose(new_state, [2,0,1])
-            memory.push(state, action, new_state, reward, done)
+            new_state_stacked = state_stacked.copy()
+            new_state_stacked[:-1] = new_state_stacked[1:]
+            new_state_stacked[0] = new_state
+            
+            memory.push(state_stacked, action, new_state_stacked, reward, done)
             
             if memory.__len__()>=2e4 and t%4==0: 
                 batch = memory.sample(batch_size)
                 qnet_agent.optimize(batch)        
             state = new_state
+            state_stacked = new_state_stacked
             rewards.append(reward)
             
             if t>=t_tot_cut: break

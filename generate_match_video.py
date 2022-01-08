@@ -61,6 +61,7 @@ configId = config["configId"]
 screen_size = config["env_parameters"]["screen_size"]
 frame_skip = config["env_parameters"]["frame_skip"]
 seed_value = config["env_parameters"]["seed_value"]
+n_stack = config["env_parameters"]["n_stack"]
 
 #agent
 gamma = config["agent_parameters"]["gamma"]
@@ -121,16 +122,22 @@ env = wrappers.AtariPreprocessing(env,grayscale_obs=True,frame_skip=frame_skip,g
 
 state = env.reset()
 state = np.transpose(state, [2,0,1])
+state_stacked = np.array([state for n in range(n_stack)])
 t=0
 
 while True:
     try:
-        state_cuda = torch.Tensor(state).cuda().unsqueeze(0)
+        state_cuda = torch.Tensor(np.concatenate(state_stacked,axis=1)).cuda().unsqueeze(0)
         action = qnet_agent.select_action(state_cuda)
         new_state, reward, done, info = env.step(action) 
         new_state = np.transpose(new_state, [2,0,1])
+        new_state_stacked = state_stacked.copy()
+        new_state_stacked[:-1] = new_state_stacked[1:]
+        new_state_stacked[0] = new_state
+            
         state = new_state
-
+        state_stacked = new_state_stacked
+        
         time.sleep(0.00001)
         fig = plt.figure(figsize=(10,8))
         ax = fig.add_subplot(111)
