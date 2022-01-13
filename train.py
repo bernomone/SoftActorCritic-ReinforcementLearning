@@ -22,6 +22,7 @@ def moving_average(a, n=3) :
     ret[n:] = ret[n:] - ret[:-n]
     return ret[n - 1:] / n
 
+torch.cuda.set_device(1)
 
 
 parser = argparse.ArgumentParser(description='Train SAC algorithm on Space Invaders')
@@ -138,15 +139,15 @@ for i_episode in range(len(rewards_per_episode),n_episodes):
             new_state = np.transpose(new_state, [2,0,1])
             new_state_stacked = state_stacked.copy()
             new_state_stacked[:-1] = new_state_stacked[1:]
-            new_state_stacked[0] = new_state
+            new_state_stacked[0] = new_state.copy()
             
             memory.push(state_stacked, action, new_state_stacked, reward, done)
             
             if memory.__len__()>=2e4 and t%4==0: 
                 batch = memory.sample(batch_size)
                 qnet_agent.optimize(batch)        
-            state = new_state
-            state_stacked = new_state_stacked
+            state = new_state.copy()
+            state_stacked = new_state_stacked.copy()
             rewards.append(reward)
             
             if t>=t_tot_cut: break
