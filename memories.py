@@ -2,7 +2,7 @@ import random
 import numpy as np
 
 class ExperienceReplay(object):
-    def __init__(self, capacity=500000):
+    def __init__(self, capacity=100000):
         self.capacity = capacity
         self.memory = []
         self.position = 0
